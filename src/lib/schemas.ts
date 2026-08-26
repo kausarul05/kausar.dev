@@ -36,6 +36,7 @@ export const projectSchema = z.object({
   tags: listFromText,
   accentFrom: hex,
   accentTo: hex,
+  image: z.string().trim().default(""),
   href: z.string().trim().url("Must be a full URL").or(z.literal("")).default(""),
   repo: z.string().trim().url("Must be a full URL").or(z.literal("")).default(""),
 });
@@ -71,6 +72,7 @@ export const settingsSchema = z.object({
     first: z.string().trim().min(1, "First name is required"),
     last: z.string().trim().min(1, "Last name is required"),
     role: z.string().trim().min(1, "Role is required"),
+    roleTail: z.string().trim().default(""),
     tagline: z.string().trim().min(1, "Tagline is required"),
     location: z.string().trim().min(1),
     timeZone: z.string().trim().min(1),

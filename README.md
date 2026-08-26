@@ -21,6 +21,8 @@ npm run dev                       # http://localhost:3000
 | `npm run lint` / `npm run typecheck` | ESLint (incl. React Compiler rules) / `tsc --noEmit` |
 | `npm run seed` | Copy `src/content/seed.ts` into MongoDB (add `-- --force` to overwrite) |
 | `npm run set-password -- "…"` | Write a scrypt hash of your admin password into `.env.local` |
+| `npm run shots` | Re-capture the live project screenshots into `public/projects/` |
+| `npm run video` | Record the walkthrough and build both video cuts |
 | `npm run check-db` | Connection smoke test — prints the URI (masked) and per-collection counts |
 | `npm run reorder-projects -- "A" "B" …` | Set project order from the terminal |
 
@@ -106,6 +108,17 @@ Before publishing, two things still need your attention:
 
 A résumé isn't linked anywhere. To add one, drop `resume.pdf` into `public/` and
 link it from `src/components/sections/contact.tsx`.
+
+### Project screenshots
+
+`npm run shots` opens each project's live URL in headless Chromium and saves a
+screenshot to `public/projects/`. The card art comes from there; the accent
+colours tint it and stand in when a project has no image. Consent banners are
+hidden with CSS for the shot rather than accepted — the script never clicks
+"accept" on your behalf.
+
+Add or change a URL in `scripts/shots.mjs`, then point the project's **Screenshot**
+field (Admin → Projects) at the new file.
 
 ### The headshot
 

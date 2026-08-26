@@ -49,8 +49,8 @@ export function Portrait({ className }: { className?: string }) {
           src={site.photo}
           alt={`${site.name}, ${site.role}`}
           fill
-          sizes="(min-width: 768px) 340px, 60vw"
-          className="scale-105 rounded-full object-cover object-top grayscale-[0.4] contrast-[1.05] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-hover:grayscale-0"
+          sizes="(min-width: 768px) 680px, 90vw"
+          className="scale-105 rounded-full object-cover object-top grayscale-[0.3] contrast-[1.02] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-hover:grayscale-0"
           priority={false}
         />
       </div>

@@ -277,6 +277,7 @@ export async function saveSettings(_prev: ActionState, formData: FormData): Prom
       first: formData.get("first"),
       last: formData.get("last"),
       role: formData.get("role"),
+      roleTail: formData.get("roleTail") ?? "",
       tagline: formData.get("tagline"),
       location: formData.get("location"),
       timeZone: formData.get("timeZone"),

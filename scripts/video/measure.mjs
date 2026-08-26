@@ -7,10 +7,11 @@
 import { chromium } from "playwright";
 
 const URL = process.env.VIDEO_URL ?? "http://localhost:3100/";
-const SIZE = 1080;
+const WIDTH = Number(process.env.VIDEO_W ?? 1920);
+const HEIGHT = Number(process.env.VIDEO_H ?? 1080);
 
 const browser = await chromium.launch();
-const page = await browser.newPage({ viewport: { width: SIZE, height: SIZE } });
+const page = await browser.newPage({ viewport: { width: WIDTH, height: HEIGHT } });
 
 // Skip the intro curtain — the hero reveal is the stronger opening.
 await page.addInitScript(() => sessionStorage.setItem("intro-seen", "1"));

@@ -1,19 +1,19 @@
 # Voiceover script
 
-Read this while watching `kausarul-portfolio-1080x1080.mp4` — the on-screen
+Read this while watching `kausarul-portfolio-1920x1080.mp4` — the on-screen
 captions land at the same moments, so you can use them as a teleprompter.
 
-Total speaking time: **~33 seconds** inside a 43-second video.
+Total speaking time: **~34 seconds** inside a 43-second video.
 
 | Start | Say | What's on screen |
 | --- | --- | --- |
-| 0:00 | *(silence — let the intro card breathe)* | Name card |
-| 0:03 | "I'm Kausarul — a frontend engineer from Dhaka." | Hero, name landing |
-| 0:07 | "I build interfaces that feel finished. Fast, accessible, down to the last frame." | Hero → About |
-| 0:14 | "Logistics platforms with live GPS tracking. A commerce app shipped to the store. A gaming platform running on the Riot API." | Project cards sliding past |
-| 0:23 | "React, Next.js, React Native, TypeScript." | Stack grid |
-| 0:27 | "And the backend when it needs one — this site runs on MongoDB, with its own admin panel." | Timeline |
-| 0:31 | "I'm open to work. Let's build something worth shipping." | Contact section |
+| 0:00 | *(silence — let the name card breathe)* | Intro card |
+| 0:03 | "I'm Kausarul — a full-stack developer from Dhaka." | Hero, name landing |
+| 0:09 | "I build products end to end. React and Next.js on the front, Node and MongoDB behind it." | Hero → About |
+| 0:16 | "Commerce platforms, B2B wholesale, logistics — all live. And two apps on Google Play." | Project cards sliding past |
+| 0:25 | "React, Next.js, Node, Express, MongoDB, React Native." | Stack grid |
+| 0:29 | "Front to database — this site runs on MongoDB, with its own admin panel." | Timeline |
+| 0:34 | "I'm open to work. Let's build something worth shipping." | Contact section |
 | 0:39 | *(silence)* | Outro card |
 
 ## Recording it
@@ -47,4 +47,15 @@ node scripts/video/voice.mjs your-recording.m4a --offset -0.3   # start earlier
 The video is stream-copied, so this is instant and lossless. Loudness is
 normalised to −16 LUFS, which is the level LinkedIn and Facebook target.
 
-Output: `video-out/kausarul-portfolio-1080x1080-voiced.mp4`
+Output: `video-out/kausarul-portfolio-1920x1080-voiced.mp4`
+
+> The voice script targets the 16:9 file. To voice the square cut instead, point
+> `VIDEO` in `scripts/video/voice.mjs` at `kausarul-portfolio-1080x1080.mp4` —
+> the timings are identical.
+
+## The two files
+
+| File | Use it for |
+| --- | --- |
+| `kausarul-portfolio-1920x1080.mp4` | LinkedIn, Facebook, YouTube, embedding on the site. The real desktop layout, full width. |
+| `kausarul-portfolio-1080x1080.mp4` | Square feeds. The same desktop footage letterboxed — not cropped, so nothing is cut off. |

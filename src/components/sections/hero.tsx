@@ -76,8 +76,8 @@ export function Hero() {
             transition={{ delay: 1.05, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
           >
             <p className="text-[1.35rem] leading-[1.25] text-ink md:text-[1.7rem]">
-              <span className="serif-accent text-acid">Frontend engineer</span>{" "}
-              <span className="text-mute">&amp; interface craftsman</span>
+              <span className="serif-accent text-acid">{site.role}</span>
+              {site.roleTail && <span className="text-mute"> {site.roleTail}</span>}
             </p>
           </motion.div>
 

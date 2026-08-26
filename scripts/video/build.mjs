@@ -140,7 +140,24 @@ writeFileSync(
   [intro, body, outro].map((f) => `file '${f.replace(/\\/g, "/")}'`).join("\n"),
 );
 
-const final = join(OUT, "kausarul-portfolio-1080x1080.mp4");
+const final = join(OUT, "kausarul-portfolio-1920x1080.mp4");
 run(["-f", "concat", "-safe", "0", "-i", listPath, "-c", "copy", "-movflags", "+faststart", final]);
 
 console.log(`\nWrote ${final}`);
+
+/* ------------------------------------------------------------------ *
+ * 4. Square cut for feeds that favour 1:1
+ * ------------------------------------------------------------------ */
+
+// Letterboxed rather than cropped: cropping a desktop layout down to a square
+// slices the page in half, which is what made the first attempt read as a
+// narrow "tab" view instead of the real site.
+const square = join(OUT, "kausarul-portfolio-1080x1080.mp4");
+run([
+  "-i", final,
+  "-vf", "scale=1080:-2:flags=lanczos,pad=1080:1080:0:(1080-ih)/2:color=#05060a",
+  ...VIDEO_ARGS,
+  "-c:a", "copy",
+  square,
+]);
+console.log(`Wrote ${square}`);

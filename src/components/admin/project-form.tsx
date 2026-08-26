@@ -89,7 +89,20 @@ export function ProjectForm({ project }: { project?: Project }) {
         </div>
       </Card>
 
-      <Card title="Artwork" description="The two colours behind the project title on the card.">
+      <Card
+        title="Artwork"
+        description="A screenshot if you have one; the two colours tint it and stand in when you don't."
+      >
+        <div className="mb-5">
+          <Field
+            label="Screenshot"
+            name="image"
+            hint="A file in /public, e.g. /projects/dealnux.jpg. Run `npm run shots` to refresh them."
+            error={err.image}
+          >
+            <Input name="image" defaultValue={project?.image} placeholder="/projects/name.jpg" />
+          </Field>
+        </div>
         <div className="grid gap-5 md:grid-cols-2">
           <Field label="Accent from" name="accentFrom" error={err.accentFrom}>
             <ColorInput name="accentFrom" defaultValue={project?.accentFrom ?? "#6d4dff"} />

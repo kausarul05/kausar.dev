@@ -41,6 +41,14 @@ export function SettingsForm({ settings }: { settings: Settings }) {
             <Input name="role" defaultValue={settings.site.role} />
           </Field>
           <Field
+            label="Role tail"
+            name="roleTail"
+            hint="Muted text after the role in the hero. Leave blank to omit."
+            error={err["site.roleTail"]}
+          >
+            <Input name="roleTail" defaultValue={settings.site.roleTail} />
+          </Field>
+          <Field
             label="First name"
             name="first"
             hint="The solid line of the hero lockup."

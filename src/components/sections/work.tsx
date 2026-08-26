@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { useContent } from "@/components/providers/content";
 import type { Project } from "@/lib/schemas";
 import { Magnetic } from "@/components/ui/magnetic";
+import { cn } from "@/lib/utils";
 
 /**
  * The work section scrolls sideways. The outer element is tall enough to
@@ -93,6 +95,13 @@ export function Work() {
 /** Tags past this count collapse into a +n chip so the card never reflows. */
 const MAX_TAGS = 5;
 
+/** Play Store links deserve their own wording on the card's action row. */
+function linkLabel(href: string): string {
+  if (/play\.google\.com/.test(href)) return "Google Play";
+  if (/apps\.apple\.com/.test(href)) return "App Store";
+  return "Visit site";
+}
+
 function Card({
   project,
   index,
@@ -103,35 +112,78 @@ function Card({
   total: number;
 }) {
   const [from, to] = project.accent;
+  const live = Boolean(project.href);
+  const Shell = live ? "a" : "article";
 
   return (
-    <article
-      data-cursor="view"
-      className="group relative flex h-[64svh] max-h-[620px] w-[85vw] shrink-0 flex-col overflow-hidden md:h-[70svh] rounded-[26px] border border-white/8 bg-panel/70 backdrop-blur-md transition-colors duration-500 hover:border-white/16 sm:w-[70vw] md:w-[560px]"
+    <Shell
+      {...(live
+        ? { href: project.href, target: "_blank", rel: "noreferrer noopener" }
+        : {})}
+      data-cursor={live ? "view" : undefined}
+      className="group relative flex h-[64svh] max-h-[620px] w-[85vw] shrink-0 flex-col overflow-hidden rounded-[26px] border border-white/8 bg-panel/70 backdrop-blur-md transition-colors duration-500 hover:border-white/16 sm:w-[70vw] md:h-[70svh] md:w-[560px]"
     >
-      {/* Generated art panel */}
+      {/* Screenshot, tinted with the project's accents — or just the gradient. */}
       <div className="relative h-[38%] shrink-0 overflow-hidden">
         <div
           className="absolute inset-0 transition-transform duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110"
           style={{ background: `linear-gradient(135deg, ${from} 0%, ${to} 100%)` }}
-        />
-        <div className="absolute inset-0 opacity-40 mix-blend-overlay dot-grid" />
-        <div className="absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent" />
+        >
+          {project.image && (
+            <Image
+              src={project.image}
+              alt=""
+              fill
+              sizes="560px"
+              className="object-cover object-top"
+            />
+          )}
+        </div>
+
+        {project.image ? (
+          <>
+            {/* Pulls the bright shots into the page's palette. */}
+            <div
+              className="absolute inset-0 opacity-45 mix-blend-color"
+              style={{ background: `linear-gradient(135deg, ${from}, ${to})` }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-panel via-panel/55 to-void/25" />
+          </>
+        ) : (
+          <>
+            <div className="dot-grid absolute inset-0 opacity-40 mix-blend-overlay" />
+            <div className="absolute inset-0 bg-gradient-to-t from-panel via-panel/40 to-transparent" />
+          </>
+        )}
 
         <div className="relative flex h-full flex-col justify-between p-6 md:p-7">
           <div className="flex items-start justify-between">
-            <span className="font-mono text-[10px] tracking-[0.2em] text-void/70 uppercase">
+            <span
+              className={cn(
+                "font-mono text-[10px] tracking-[0.2em] uppercase",
+                project.image ? "text-ink/70" : "text-void/70",
+              )}
+            >
               {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
             </span>
             {project.status && (
-              <span className="rounded-full bg-void/25 px-3 py-1 font-mono text-[9px] tracking-[0.16em] text-void uppercase backdrop-blur-sm">
+              <span
+                className={cn(
+                  "rounded-full px-3 py-1 font-mono text-[9px] tracking-[0.16em] uppercase backdrop-blur-sm",
+                  project.image
+                    ? "bg-void/50 text-ink"
+                    : "bg-void/25 text-void",
+                )}
+              >
                 {project.status}
               </span>
             )}
           </div>
           <span
-            className="display text-[2.6rem] leading-none text-void/85 md:text-[3.2rem]"
-            style={{ WebkitTextStroke: "0px" }}
+            className={cn(
+              "display text-[2.6rem] leading-none md:text-[3.2rem]",
+              project.image ? "text-ink drop-shadow-[0_2px_18px_rgba(5,6,10,0.85)]" : "text-void/85",
+            )}
           >
             {project.title}
           </span>
@@ -179,13 +231,15 @@ function Card({
               {project.role}
             </span>
             <span className="flex items-center gap-2 text-mute transition-colors group-hover:text-acid">
-              <span className="font-mono text-[10px] tracking-[0.18em] uppercase">Case</span>
+              <span className="font-mono text-[10px] tracking-[0.18em] uppercase">
+                {live ? linkLabel(project.href) : "Case study"}
+              </span>
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </span>
           </div>
         </div>
       </div>
-    </article>
+    </Shell>
   );
 }
 

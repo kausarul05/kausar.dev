@@ -11,7 +11,8 @@ import { chromium } from "playwright";
 import { mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 
-const SIZE = 1080;
+const WIDTH = Number(process.env.VIDEO_W ?? 1920);
+const HEIGHT = Number(process.env.VIDEO_H ?? 1080);
 const OUT = resolve("video-out/cards");
 mkdirSync(OUT, { recursive: true });
 
@@ -29,7 +30,7 @@ const BASE = `
   *{margin:0;padding:0;box-sizing:border-box}
   :root{${TOKENS}}
   body{
-    width:${SIZE}px;height:${SIZE}px;
+    width:${WIDTH}px;height:${HEIGHT}px;
     font-family:'Geist',system-ui,sans-serif;
     color:var(--ink);
     -webkit-font-smoothing:antialiased;
@@ -49,58 +50,60 @@ const GROUND = `
 
 const introHtml = `<style>${BASE}</style>
 <div style="${GROUND}"></div>
-<div style="position:fixed;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:88px 84px">
-  <div style="display:flex;align-items:center;gap:18px">
-    <span style="width:14px;height:14px;border-radius:999px;background:var(--acid)"></span>
-    <span class="mono" style="font-size:19px;color:var(--mute)">Portfolio — 2026</span>
+<div style="position:fixed;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:72px 96px">
+  <div style="display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:18px">
+      <span style="width:14px;height:14px;border-radius:999px;background:var(--acid)"></span>
+      <span class="mono" style="font-size:20px;color:var(--mute)">Portfolio — 2026</span>
+    </div>
+    <span class="mono" style="font-size:20px;color:var(--dim)">Dhaka, Bangladesh</span>
   </div>
   <div>
-    <p class="display" style="font-size:132px">Kausarul</p>
-    <p class="display" style="font-size:132px;color:transparent;-webkit-text-stroke:2px #eceef58c">Islam</p>
-    <p class="serif" style="font-size:60px;margin-top:34px">Frontend engineer</p>
+    <p class="display" style="font-size:170px">Kausarul</p>
+    <p class="display" style="font-size:170px;color:transparent;-webkit-text-stroke:2px #eceef58c">Islam</p>
   </div>
-  <p class="mono" style="font-size:19px;color:var(--dim)">Dhaka, Bangladesh</p>
+  <p class="serif" style="font-size:72px">Full-stack developer</p>
 </div>`;
 
 const outroHtml = `<style>${BASE}</style>
 <div style="${GROUND}"></div>
-<div style="position:fixed;inset:0;display:flex;flex-direction:column;justify-content:center;gap:44px;padding:0 84px">
+<div style="position:fixed;inset:0;display:flex;flex-direction:column;justify-content:center;gap:40px;padding:0 96px">
   <div style="display:flex;align-items:center;gap:16px">
     <span style="width:12px;height:12px;border-radius:999px;background:var(--acid)"></span>
-    <span class="mono" style="font-size:19px;color:var(--acid)">Open to work</span>
+    <span class="mono" style="font-size:20px;color:var(--acid)">Open to work</span>
   </div>
-  <p class="display" style="font-size:104px">Let's build<br>something <span class="serif" style="font-size:104px">worth shipping</span></p>
-  <div style="display:flex;flex-direction:column;gap:14px;margin-top:16px">
-    <p style="font-size:34px;color:var(--ink)">kauserulislam0055@gmail.com</p>
-    <p class="mono" style="font-size:19px;color:var(--mute)">github.com/kausarul05 &nbsp;·&nbsp; linkedin.com/in/kausarul05</p>
+  <p class="display" style="font-size:124px">Let's build something <span class="serif" style="font-size:124px">worth shipping</span></p>
+  <div style="display:flex;flex-direction:column;gap:16px;margin-top:12px">
+    <p style="font-size:40px;color:var(--ink)">kauserulislam0055@gmail.com</p>
+    <p class="mono" style="font-size:20px;color:var(--mute)">github.com/kausarul05 &nbsp;·&nbsp; linkedin.com/in/kausarul05</p>
   </div>
 </div>`;
 
 /** Lower-third strips, drawn over the walkthrough. */
 const CAPTIONS = [
-  { file: "cap1", kicker: "01", text: "Frontend engineer, from Dhaka." },
+  { file: "cap1", kicker: "01", text: "Full-stack developer, from Dhaka." },
   { file: "cap2", kicker: "02", text: "Interfaces that feel finished — down to the last frame." },
-  { file: "cap3", kicker: "03", text: "Logistics platforms. Commerce apps. Gaming products." },
-  { file: "cap4", kicker: "04", text: "React · Next.js · React Native · TypeScript" },
-  { file: "cap5", kicker: "05", text: "And the backend when it needs one — this site runs on MongoDB." },
+  { file: "cap3", kicker: "03", text: "Commerce platforms, B2B wholesale, logistics — live, with two apps on Google Play." },
+  { file: "cap4", kicker: "04", text: "React · Next.js · Node.js · Express · MongoDB · React Native" },
+  { file: "cap5", kicker: "05", text: "Front to database — this site runs on MongoDB, with its own admin panel." },
 ];
 
 function captionHtml({ kicker, text }) {
   return `<style>${BASE}
     body{background:transparent}
   </style>
-  <div style="position:fixed;left:0;right:0;bottom:0;height:340px;
-      background:linear-gradient(to top, #05060af2 8%, #05060ab8 55%, transparent 100%)"></div>
-  <div style="position:fixed;left:84px;right:84px;bottom:96px;display:flex;gap:26px;align-items:flex-start">
-    <span class="mono" style="font-size:17px;color:var(--acid);padding-top:12px">${kicker}</span>
-    <p style="font-size:46px;line-height:1.24;font-weight:500;letter-spacing:-.02em;max-width:820px">${text}</p>
+  <div style="position:fixed;left:0;right:0;bottom:0;height:330px;
+      background:linear-gradient(to top, #05060af5 8%, #05060abf 55%, transparent 100%)"></div>
+  <div style="position:fixed;left:96px;right:96px;bottom:88px;display:flex;gap:30px;align-items:flex-start">
+    <span class="mono" style="font-size:18px;color:var(--acid);padding-top:14px">${kicker}</span>
+    <p style="font-size:52px;line-height:1.2;font-weight:500;letter-spacing:-.022em;max-width:1250px">${text}</p>
   </div>`;
 }
 
 const browser = await chromium.launch();
 
 async function shoot(name, html, transparent = false) {
-  const page = await browser.newPage({ viewport: { width: SIZE, height: SIZE } });
+  const page = await browser.newPage({ viewport: { width: WIDTH, height: HEIGHT } });
   await page.setContent(html, { waitUntil: "networkidle" });
   await page.evaluate(() => document.fonts.ready);
   await page.waitForTimeout(250);

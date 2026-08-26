@@ -25,6 +25,7 @@ function toProject(doc: WithId<Document>): Project {
     accentFrom,
     accentTo,
     accent: [accentFrom, accentTo],
+    image: String(doc.image ?? ""),
     href: String(doc.href ?? ""),
     repo: String(doc.repo ?? ""),
   };

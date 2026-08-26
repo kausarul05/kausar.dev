@@ -17,7 +17,8 @@ import { mkdirSync, readdirSync, renameSync, rmSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 const URL = process.env.VIDEO_URL ?? "http://localhost:3100/";
-const SIZE = 1080;
+const WIDTH = Number(process.env.VIDEO_W ?? 1920);
+const HEIGHT = Number(process.env.VIDEO_H ?? 1080);
 const OUT_DIR = resolve("video-out");
 const RAW_DIR = join(OUT_DIR, "raw");
 
@@ -26,13 +27,13 @@ const RAW_DIR = join(OUT_DIR, "raw");
  * `node scripts/video/measure.mjs`; re-run it if the page height changes.
  */
 const TIMELINE = [
-  { name: "into-about", to: 1400, ms: 3500 },
-  { name: "about-copy", to: 2300, ms: 3500 },
-  { name: "work", to: 6450, ms: 9500 },
-  { name: "stack", to: 7700, ms: 4500 },
-  { name: "path", to: 8300, ms: 3500 },
-  { name: "contact", to: 8760, ms: 5000 },
-  { name: "hold", to: 8760, ms: 1500 },
+  { name: "into-about", to: 1500, ms: 3500 },
+  { name: "about-copy", to: 2350, ms: 3500 },
+  { name: "work", to: 5700, ms: 9500 },
+  { name: "stack", to: 6900, ms: 4500 },
+  { name: "path", to: 7600, ms: 3500 },
+  { name: "contact", to: 7973, ms: 5000 },
+  { name: "hold", to: 7973, ms: 1500 },
 ];
 
 rmSync(RAW_DIR, { recursive: true, force: true });
@@ -40,8 +41,8 @@ mkdirSync(RAW_DIR, { recursive: true });
 
 const browser = await chromium.launch();
 const context = await browser.newContext({
-  viewport: { width: SIZE, height: SIZE },
-  recordVideo: { dir: RAW_DIR, size: { width: SIZE, height: SIZE } },
+  viewport: { width: WIDTH, height: HEIGHT },
+  recordVideo: { dir: RAW_DIR, size: { width: WIDTH, height: HEIGHT } },
   reducedMotion: "no-preference",
 });
 context.setDefaultTimeout(0);
@@ -56,12 +57,12 @@ await page.waitForTimeout(400);
 
 // A real mouse position gives genuine CSS :hover on whatever sits under it;
 // synthetic pointermove events during the run drive the JS-based effects.
-await page.mouse.move(SIZE * 0.42, SIZE * 0.55);
+await page.mouse.move(WIDTH * 0.35, HEIGHT * 0.6);
 
-console.log(`Recording ${URL} at ${SIZE}×${SIZE}\n`);
+console.log(`Recording ${URL} at ${WIDTH}×${HEIGHT}\n`);
 
 const result = await page.evaluate(
-  async ({ timeline, size }) => {
+  async ({ timeline, size, width }) => {
     const wait = (ms) => new Promise((r) => setTimeout(r, ms));
     const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
 
@@ -102,7 +103,7 @@ const result = await page.evaluate(
     await wait(1400);
     await over(1600, (t) => {
       const e = ease(t);
-      pointer(220 + (900 - 220) * e, 620 - 180 * Math.sin(Math.PI * t));
+      pointer(width * 0.16 + width * 0.62 * e, size * 0.62 - size * 0.2 * Math.sin(Math.PI * t));
     });
     await wait(700);
     log.push(`hero done, scrollY=${Math.round(scrollY)}`);
@@ -128,7 +129,7 @@ const result = await page.evaluate(
       maxScroll: document.documentElement.scrollHeight - size,
     };
   },
-  { timeline: TIMELINE, size: SIZE },
+  { timeline: TIMELINE, size: HEIGHT, width: WIDTH },
 );
 
 for (const line of result.log) console.log(`  ${line}`);

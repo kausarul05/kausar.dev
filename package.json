@@ -17,7 +17,8 @@
     "video:cards": "node scripts/video/cards.mjs",
     "video:build": "node scripts/video/build.mjs",
     "video:voice": "node scripts/video/voice.mjs",
-    "video": "npm run video:record && npm run video:cards && npm run video:build"
+    "video": "npm run video:record && npm run video:cards && npm run video:build",
+    "shots": "node scripts/shots.mjs"
   },
   "dependencies": {
     "clsx": "^2.1.1",

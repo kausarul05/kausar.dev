@@ -39,9 +39,9 @@ const PRESENCE: Record<string, number> = {
 };
 
 /** How present it is when the pointer is elsewhere, before PRESENCE scales it. */
-const REST_OPACITY = "opacity-11";
+const REST_OPACITY = "opacity-16";
 /** How present it is inside the cursor's pool of light. */
-const REVEAL_OPACITY = "opacity-70";
+const REVEAL_OPACITY = "opacity-80";
 /** Radius of that pool, in px. */
 const REVEAL_RADIUS = 230;
 /** Rest opacity for reduced-motion visitors, who never get the reveal. */
@@ -135,9 +135,9 @@ export function GhostPortrait() {
           alt=""
           fill
           priority
-          sizes="(min-width: 768px) 58vh, 46vh"
+          sizes="(min-width: 768px) 720px, 520px"
           className={cn(
-            "object-cover object-top grayscale brightness-50 contrast-150",
+            "object-cover object-top grayscale brightness-65 contrast-125",
             reduced ? REDUCED_OPACITY : REST_OPACITY,
           )}
         />
@@ -152,9 +152,9 @@ export function GhostPortrait() {
               src={site.photo}
               alt=""
               fill
-              sizes="(min-width: 768px) 58vh, 46vh"
+              sizes="(min-width: 768px) 720px, 520px"
               className={cn(
-                "object-cover object-top grayscale-[0.25] brightness-75 contrast-125",
+                "object-cover object-top grayscale-[0.15] brightness-90 contrast-110",
                 REVEAL_OPACITY,
               )}
             />
