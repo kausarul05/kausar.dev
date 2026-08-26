@@ -54,6 +54,11 @@ export const pathEntrySchema = z.object({
   points: linesFromText,
 });
 
+export const solveSchema = z.object({
+  title: z.string().trim().min(1),
+  body: z.string().trim().min(1),
+});
+
 export const statSchema = z.object({
   value: z.coerce.number().int(),
   suffix: z.string().trim().default(""),
@@ -88,6 +93,7 @@ export const settingsSchema = z.object({
     body: z.string().trim().min(1, "About text is required"),
     note: z.string().trim().min(1),
     stats: z.array(statSchema).max(4),
+    solves: z.array(solveSchema).max(4),
   }),
   contact: z.object({
     kicker: z.string().trim().min(1),

@@ -28,12 +28,12 @@ const RAW_DIR = join(OUT_DIR, "raw");
  */
 const TIMELINE = [
   { name: "into-about", to: 1500, ms: 3500 },
-  { name: "about-copy", to: 2350, ms: 3500 },
-  { name: "work", to: 5700, ms: 9500 },
-  { name: "stack", to: 6900, ms: 4500 },
-  { name: "path", to: 7600, ms: 3500 },
-  { name: "contact", to: 7973, ms: 5000 },
-  { name: "hold", to: 7973, ms: 1500 },
+  { name: "about-solves", to: 2750, ms: 4500 },
+  { name: "work", to: 6150, ms: 9500 },
+  { name: "stack", to: 7400, ms: 4500 },
+  { name: "path", to: 8300, ms: 4000 },
+  { name: "contact", to: 8704, ms: 5000 },
+  { name: "hold", to: 8704, ms: 1500 },
 ];
 
 rmSync(RAW_DIR, { recursive: true, force: true });

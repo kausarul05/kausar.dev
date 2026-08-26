@@ -1,13 +1,16 @@
 import { notFound } from "next/navigation";
 import { requireAuth } from "@/lib/auth";
-import { getStackGroup } from "@/lib/content";
+import { readAdmin, getStackGroup } from "@/lib/content";
 import { PageHeader } from "@/components/admin/page-parts";
+import { DbError } from "@/components/admin/db-error";
 import { StackForm } from "@/components/admin/stack-form";
 
 export default async function EditStackPage({ params }: PageProps<"/admin/stack/[id]">) {
   await requireAuth();
   const { id } = await params;
-  const group = await getStackGroup(id);
+  const result = await readAdmin(() => getStackGroup(id));
+  if (!result.ok) return <DbError message={result.error} />;
+  const group = result.data;
   if (!group) notFound();
 
   return (

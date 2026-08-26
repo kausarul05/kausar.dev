@@ -95,6 +95,27 @@ export const getContent = cache(async (): Promise<Content> => {
   }
 });
 
+/** Either the data, or a message explaining why it couldn't be read. */
+export type AdminRead<T> = { ok: true; data: T } | { ok: false; error: string };
+
+/**
+ * Runs an admin read and reports failure instead of throwing.
+ *
+ * Admin pages deliberately don't fall back to seed content — a stale editor is
+ * worse than an honest error — so each one renders the failure itself. The `ok`
+ * tag is what lets TypeScript narrow `data`; keying off the message alone
+ * doesn't, since an empty string is falsy too.
+ */
+export async function readAdmin<T>(read: () => Promise<T>): Promise<AdminRead<T>> {
+  try {
+    return { ok: true, data: await read() };
+  } catch (error) {
+    const raw = error instanceof Error ? error.message : String(error);
+    // Never let a connection string's credentials reach the screen.
+    return { ok: false, error: raw.replace(/\/\/[^@]*@/, "//***:***@") };
+  }
+}
+
 /** Admin reads — these must surface failures instead of silently falling back. */
 export async function listProjects(): Promise<Project[]> {
   const db = await getDb();

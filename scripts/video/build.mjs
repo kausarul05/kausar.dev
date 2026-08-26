@@ -28,11 +28,11 @@ const OUTRO_S = 4.0;
  * is offset from that.
  */
 const CAPTIONS = [
-  { file: "cap1.png", start: 2.3, end: 6.2 },
-  { file: "cap2.png", start: 6.7, end: 12.2 },
-  { file: "cap3.png", start: 13.2, end: 21.6 },
-  { file: "cap4.png", start: 22.4, end: 26.4 },
-  { file: "cap5.png", start: 26.9, end: 30.1 },
+  { file: "cap1.png", start: 2.3, end: 6.0 },
+  { file: "cap2.png", start: 6.5, end: 13.4 },
+  { file: "cap3.png", start: 14.5, end: 22.8 },
+  { file: "cap4.png", start: 23.6, end: 27.5 },
+  { file: "cap5.png", start: 28.0, end: 31.4 },
 ];
 
 const VIDEO_ARGS = [

@@ -14,7 +14,7 @@ export const seed: Content = {
     roleTail: "— web, mobile, and the API in between",
     tagline:
       "I build products end to end — React and Next.js on the front, Node and MongoDB behind it, React Native when it belongs in your pocket.",
-    location: "Dhaka, Bangladesh",
+    location: "Bangladesh",
     timeZone: "Asia/Dhaka",
     edition: "2026",
     email: "kauserulislam0055@gmail.com",
@@ -27,9 +27,27 @@ export const seed: Content = {
   about: {
     kicker: "01 — About",
     body:
-      "I'm a full-stack developer from Dhaka. I started on the front end and kept going until I could ship the whole thing — the interface, the API behind it, the database under that, and the app store build when it needs one. I care about the last ten percent: the part where the layout stops shifting, the endpoint stops timing out, and the product finally feels intentional.",
+      "I'm a full-stack developer who ships whole products, not slices of them — the interface, the API behind it, the database under that, and the store build when it belongs in your pocket. I started on the front end and kept going until no part of the stack was somebody else's problem. I care about the last ten percent: where the layout stops shifting, the endpoint stops timing out, and the thing finally feels intentional.",
     note:
-      "Commerce platforms, B2B dropshipping, logistics, AI chatbots — on the web and on Google Play.",
+      "Commerce platforms, B2B wholesale, logistics and AI assistants — six shipped and live, two of them on Google Play.",
+    solves: [
+      {
+        title: "You need it built, not just designed",
+        body: "A Figma file or a rough idea goes in; a live URL comes out. Interface, API, database, deploy — one person, no handoff gaps.",
+      },
+      {
+        title: "It's slow, or it breaks on phones",
+        body: "I rebuild front ends that load fast, hold together on real devices, and stop jumping around under the person using them.",
+      },
+      {
+        title: "You need the same product on mobile",
+        body: "React Native and Expo, taken all the way through to a Play Store release — not a prototype that stalls before it ships.",
+      },
+      {
+        title: "Your team needs to run it without me",
+        body: "Payments, integrations, AI chat, and an admin panel your staff can actually use. This site has one; edit it and the page updates.",
+      },
+    ],
     stats: [
       { value: 6, suffix: "", label: "Products shipped live" },
       { value: 3, suffix: "+ yrs", label: "Shipping professionally" },
@@ -261,9 +279,10 @@ export const seed: Content = {
       period: "Aug 2025 — Present",
       title: "Executive, Front End",
       org: "Sparktech Agency",
-      location: "Dhaka, Bangladesh",
+      location: "Bangladesh",
       points: [
         "Building production front ends in React and Next.js for client products.",
+        "Shipping cross-platform mobile features in React Native alongside the web work.",
         "Owning UI architecture, component systems and browser performance.",
       ],
     },
@@ -279,11 +298,22 @@ export const seed: Content = {
       ],
     },
     {
+      id: "seed-ctti",
+      period: "Sep 2024 — Jun 2025",
+      title: "Web Development Instructor",
+      org: "CTTI — Computer Training & Freelance Institute",
+      location: "On-site",
+      points: [
+        "Taught web development in person: HTML, CSS, Tailwind CSS, JavaScript and React.",
+        "Took beginners from their first tag to building and styling their own components.",
+      ],
+    },
+    {
       id: "seed-web-arts-factory",
       period: "Jun 2023 — Jul 2025",
       title: "React Developer",
       org: "Web Arts Factory",
-      location: "Dhaka, Bangladesh",
+      location: "Bangladesh",
       points: [
         "Two years building client web applications on React.",
         "Grew from interface work into the API and data layer behind it.",

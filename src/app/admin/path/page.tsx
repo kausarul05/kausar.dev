@@ -1,14 +1,19 @@
 import Link from "next/link";
 import { Pencil, Plus } from "lucide-react";
 import { requireAuth } from "@/lib/auth";
-import { listPathEntries } from "@/lib/content";
+import { readAdmin, listPathEntries } from "@/lib/content";
 import { deletePathEntry } from "@/app/admin/actions";
 import { RowActions } from "@/components/admin/row-actions";
 import { EmptyState, PageHeader } from "@/components/admin/page-parts";
+import { DbError } from "@/components/admin/db-error";
 
 export default async function PathPage() {
   await requireAuth();
-  const entries = await listPathEntries();
+  // Narrowed through the result object — destructuring first loses the link
+  // between `error` and `data`.
+  const result = await readAdmin(listPathEntries);
+  if (!result.ok) return <DbError message={result.error} />;
+  const entries = result.data;
 
   return (
     <div className="flex flex-col gap-8">

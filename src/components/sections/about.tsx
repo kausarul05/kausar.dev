@@ -62,6 +62,41 @@ export function About() {
           </div>
         </div>
 
+        {/* What hiring me actually solves */}
+        {about.solves.length > 0 && (
+          <div className="mt-24">
+            <Reveal className="mb-10 flex items-center gap-5">
+              <span className="kicker whitespace-nowrap">What I solve</span>
+              <span className="hairline" />
+            </Reveal>
+
+            <div className="grid gap-x-10 gap-y-10 md:grid-cols-2">
+              {about.solves.map((solve, i) => (
+                <motion.div
+                  key={solve.title}
+                  className="group border-t border-white/8 pt-6"
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-12% 0px" }}
+                  transition={{ duration: 0.7, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="flex items-baseline gap-4">
+                    <span className="font-mono text-[10px] tracking-[0.2em] text-acid">
+                      0{i + 1}
+                    </span>
+                    <h3 className="text-xl leading-snug font-medium tracking-[-0.015em] text-ink md:text-2xl">
+                      {solve.title}
+                    </h3>
+                  </div>
+                  <p className="mt-3 max-w-lg pl-[calc(0.75rem+1ch)] text-[15px] leading-relaxed text-mute">
+                    {solve.body}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Stats */}
         <div className="mt-20 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/8 bg-white/5 md:grid-cols-4">
           {about.stats.map((stat, i) => (

@@ -1,13 +1,16 @@
 import { notFound } from "next/navigation";
 import { requireAuth } from "@/lib/auth";
-import { getProject } from "@/lib/content";
+import { readAdmin, getProject } from "@/lib/content";
 import { PageHeader } from "@/components/admin/page-parts";
+import { DbError } from "@/components/admin/db-error";
 import { ProjectForm } from "@/components/admin/project-form";
 
 export default async function EditProjectPage({ params }: PageProps<"/admin/projects/[id]">) {
   await requireAuth();
   const { id } = await params;
-  const project = await getProject(id);
+  const result = await readAdmin(() => getProject(id));
+  if (!result.ok) return <DbError message={result.error} />;
+  const project = result.data;
   if (!project) notFound();
 
   return (

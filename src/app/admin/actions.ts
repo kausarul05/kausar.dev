@@ -58,7 +58,10 @@ export async function login(_prev: ActionState, formData: FormData): Promise<Act
   const stored = process.env.ADMIN_PASSWORD_HASH;
 
   if (!stored) {
-    return { error: "No admin password is set. Run `npm run set-password` first." };
+    return { error: "No admin password is set for this deployment." };
+  }
+  if ((process.env.AUTH_SECRET ?? "").length < 32) {
+    return { error: "AUTH_SECRET is missing or too short — sessions can't be signed." };
   }
   if (!password) {
     return { error: "Enter your password.", fields: { password: "Required" } };
@@ -267,6 +270,9 @@ export async function saveSettings(_prev: ActionState, formData: FormData): Prom
   const statValues = formData.getAll("statValue").map(String);
   const statSuffixes = formData.getAll("statSuffix").map(String);
 
+  const solveTitles = formData.getAll("solveTitle").map(String);
+  const solveBodies = formData.getAll("solveBody").map(String);
+
   const socialLabels = formData.getAll("socialLabel").map(String);
   const socialHandles = formData.getAll("socialHandle").map(String);
   const socialHrefs = formData.getAll("socialHref").map(String);
@@ -299,6 +305,9 @@ export async function saveSettings(_prev: ActionState, formData: FormData): Prom
           suffix: statSuffixes[i] ?? "",
         }))
         .filter((stat) => stat.label.trim()),
+      solves: solveTitles
+        .map((title, i) => ({ title, body: solveBodies[i] ?? "" }))
+        .filter((solve) => solve.title.trim() && solve.body.trim()),
     },
     contact: {
       kicker: formData.get("contactKicker"),

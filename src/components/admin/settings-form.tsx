@@ -14,6 +14,7 @@ import {
 import type { Settings } from "@/lib/schemas";
 
 const MAX_STATS = 4;
+const MAX_SOLVES = 4;
 
 export function SettingsForm({ settings }: { settings: Settings }) {
   const [state, formAction] = useActionState<ActionState, FormData>(saveSettings, {});
@@ -23,6 +24,9 @@ export function SettingsForm({ settings }: { settings: Settings }) {
     settings.about.stats.length
       ? settings.about.stats
       : [{ value: 0, suffix: "", label: "" }],
+  );
+  const [solves, setSolves] = useState(() =>
+    settings.about.solves.length ? settings.about.solves : [{ title: "", body: "" }],
   );
   const [socials, setSocials] = useState(() =>
     settings.socials.length ? settings.socials : [{ label: "", handle: "", href: "" }],
@@ -136,6 +140,54 @@ export function SettingsForm({ settings }: { settings: Settings }) {
           <Field label="Note" name="aboutNote" error={err["about.note"]}>
             <Textarea name="aboutNote" defaultValue={settings.about.note} className="min-h-20" />
           </Field>
+        </div>
+
+        <div className="mt-7">
+          <p className="mb-1 font-mono text-[11px] tracking-[0.16em] text-mute uppercase">
+            What I solve
+          </p>
+          <p className="mb-4 text-xs text-dim">
+            The problems a client is hiring you to fix. Lead with their problem, not your tools.
+          </p>
+          <div className="flex flex-col gap-4">
+            {solves.map((solve, i) => (
+              <div key={i} className="flex gap-2">
+                <div className="flex flex-1 flex-col gap-2">
+                  <Input
+                    name="solveTitle"
+                    defaultValue={solve.title}
+                    placeholder="You need it built, not just designed"
+                    aria-label="Problem"
+                  />
+                  <Textarea
+                    name="solveBody"
+                    defaultValue={solve.body}
+                    placeholder="A Figma file or a rough idea goes in; a live URL comes out…"
+                    className="min-h-20"
+                    aria-label="How you solve it"
+                  />
+                </div>
+                <button
+                  type="button"
+                  aria-label="Remove item"
+                  onClick={() => setSolves(solves.filter((_, index) => index !== i))}
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 text-dim transition-colors hover:border-rose/40 hover:text-rose"
+                >
+                  <X className="h-3.5 w-3.5" />
+                </button>
+              </div>
+            ))}
+          </div>
+          {solves.length < MAX_SOLVES && (
+            <button
+              type="button"
+              onClick={() => setSolves([...solves, { title: "", body: "" }])}
+              className="mt-3 inline-flex items-center gap-2 rounded-lg border border-white/12 px-4 py-2 font-mono text-[11px] tracking-[0.14em] text-mute uppercase transition-colors hover:border-white/25 hover:text-ink"
+            >
+              <Plus className="h-3.5 w-3.5" />
+              Add item
+            </button>
+          )}
         </div>
 
         <div className="mt-7">

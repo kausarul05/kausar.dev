@@ -1,11 +1,14 @@
 import { requireAuth } from "@/lib/auth";
-import { getSettings } from "@/lib/content";
+import { readAdmin, getSettings } from "@/lib/content";
 import { PageHeader } from "@/components/admin/page-parts";
+import { DbError } from "@/components/admin/db-error";
 import { SettingsForm } from "@/components/admin/settings-form";
 
 export default async function SettingsPage() {
   await requireAuth();
-  const settings = await getSettings();
+  const result = await readAdmin(getSettings);
+  if (!result.ok) return <DbError message={result.error} />;
+  const settings = result.data;
 
   return (
     <div className="flex flex-col gap-8">

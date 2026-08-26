@@ -56,7 +56,7 @@ const introHtml = `<style>${BASE}</style>
       <span style="width:14px;height:14px;border-radius:999px;background:var(--acid)"></span>
       <span class="mono" style="font-size:20px;color:var(--mute)">Portfolio — 2026</span>
     </div>
-    <span class="mono" style="font-size:20px;color:var(--dim)">Dhaka, Bangladesh</span>
+    <span class="mono" style="font-size:20px;color:var(--dim)">Bangladesh</span>
   </div>
   <div>
     <p class="display" style="font-size:170px">Kausarul</p>
@@ -81,8 +81,8 @@ const outroHtml = `<style>${BASE}</style>
 
 /** Lower-third strips, drawn over the walkthrough. */
 const CAPTIONS = [
-  { file: "cap1", kicker: "01", text: "Full-stack developer, from Dhaka." },
-  { file: "cap2", kicker: "02", text: "Interfaces that feel finished — down to the last frame." },
+  { file: "cap1", kicker: "01", text: "Full-stack developer. I ship whole products, not slices." },
+  { file: "cap2", kicker: "02", text: "A rough idea goes in. A live URL comes out." },
   { file: "cap3", kicker: "03", text: "Commerce platforms, B2B wholesale, logistics — live, with two apps on Google Play." },
   { file: "cap4", kicker: "04", text: "React · Next.js · Node.js · Express · MongoDB · React Native" },
   { file: "cap5", kicker: "05", text: "Front to database — this site runs on MongoDB, with its own admin panel." },

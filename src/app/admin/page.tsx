@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { AlertTriangle, ArrowUpRight, FolderKanban, Layers, Route, Settings } from "lucide-react";
+import { ArrowUpRight, FolderKanban, Layers, Route, Settings } from "lucide-react";
+import { DbError } from "@/components/admin/db-error";
 import { requireAuth } from "@/lib/auth";
 import { listPathEntries, listProjects, listStackGroups } from "@/lib/content";
 
@@ -70,18 +71,7 @@ export default async function AdminHome() {
         </p>
       </header>
 
-      {error && (
-        <div className="flex items-start gap-3 rounded-xl border border-rose/25 bg-rose/8 p-4">
-          <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-rose" />
-          <div className="text-sm">
-            <p className="text-rose">Couldn&apos;t reach MongoDB.</p>
-            <p className="mt-1 text-mute">
-              The public site is serving seed content until the connection is back.
-            </p>
-            <p className="mt-2 font-mono text-xs break-all text-dim">{error}</p>
-          </div>
-        </div>
-      )}
+      {error && <DbError message={error} />}
 
       <div className="grid gap-4 sm:grid-cols-2">
         {cards.map((card) => (
