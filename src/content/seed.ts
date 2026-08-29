@@ -205,7 +205,7 @@ export const seed: Content = {
       id: "seed-chatbot",
       title: "AI Chatbot 24",
       subtitle: "AI assistant on Google Play",
-      year: "2025",
+      year: "2026",
       role: "Mobile Developer",
       status: "On Google Play",
       summary:
