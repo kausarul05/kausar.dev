@@ -44,3 +44,6 @@ next-env.d.ts
 # rendered video artefacts (keep the scripts, not the output)
 video-out/*
 !video-out/voiceover-script.md
+
+# generated documents (regenerate with `npm run cv`)
+cv-out/

@@ -152,6 +152,9 @@ export function GhostPortrait() {
               src={site.photo}
               alt=""
               fill
+              // Same URL as the base layer, so this shares its request — but
+              // Next still wants the hint on every above-the-fold <Image>.
+              priority
               sizes="(min-width: 768px) 720px, 520px"
               className={cn(
                 "object-cover object-top grayscale-[0.15] brightness-90 contrast-110",

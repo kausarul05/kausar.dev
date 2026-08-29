@@ -21,6 +21,7 @@ npm run dev                       # http://localhost:3000
 | `npm run lint` / `npm run typecheck` | ESLint (incl. React Compiler rules) / `tsc --noEmit` |
 | `npm run seed` | Copy `src/content/seed.ts` into MongoDB (add `-- --force` to overwrite) |
 | `npm run set-password -- "…"` | Write a scrypt hash of your admin password into `.env.local` |
+| `npm run cv` | Render the CV and both résumés to PDF in `cv-out/` |
 | `npm run shots` | Re-capture the live project screenshots into `public/projects/` |
 | `npm run video` | Record the walkthrough and build both video cuts |
 | `npm run check-db` | Connection smoke test — prints the URI (masked) and per-collection counts |
@@ -108,6 +109,33 @@ Before publishing, two things still need your attention:
 
 A résumé isn't linked anywhere. To add one, drop `resume.pdf` into `public/` and
 link it from `src/components/sections/contact.tsx`.
+
+### CV and résumés
+
+`npm run cv` renders three documents into `cv-out/`, plus the HTML each one was
+printed from:
+
+| File | What it is |
+| --- | --- |
+| `Kausarul-Islam-CV.pdf` | Two pages. Everything — four roles, all six projects with highlights, the full stack. |
+| `Kausarul-Islam-Resume-FullStack.pdf` | One page, aimed at full-stack roles. |
+| `Kausarul-Islam-Resume-Frontend.pdf` | One page, same history told from the interface side. |
+
+Content comes from `src/content/seed.ts`, so the documents and the site never
+drift apart. `src/content/cv.ts` holds what a document needs and a website
+doesn't — education, phone number, and a summary per variant. **Both education
+and phone are `TODO` placeholders; fill them in before sending anything.**
+
+Design decisions worth keeping if you edit them:
+
+- **Light, not dark.** A dark résumé wastes ink on paper and trips up some of
+  the parsers that sit between you and a human reader.
+- **Single column, real text.** No sidebars, no text baked into images — those
+  are what break automated parsing.
+- **Links are real anchors**, so they stay clickable inside the PDF.
+- The one-pagers use a `compact` body class and trim each project to a single
+  sentence. If you add content and one spills to a second page, cut a project
+  before you shrink the type.
 
 ### Project screenshots
 

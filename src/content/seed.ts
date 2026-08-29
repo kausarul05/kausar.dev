@@ -20,7 +20,7 @@ export const seed: Content = {
     email: "kauserulislam0055@gmail.com",
     available: true,
     availableLabel: "Open to work",
-    url: "https://kausarul.dev",
+    url: "https://kausardev.vercel.app",
     photo: "/kausarul.jpg",
   },
 
@@ -66,7 +66,7 @@ export const seed: Content = {
 
   socials: [
     { label: "GitHub", handle: "@kausarul05", href: "https://github.com/kausarul05" },
-    { label: "LinkedIn", handle: "in/kausarul05", href: "https://linkedin.com/in/kausarul05" },
+    { label: "LinkedIn", handle: "in/kausarul-islam", href: "https://www.linkedin.com/in/kausarul-islam" },
     { label: "X", handle: "@kausarul05", href: "https://x.com/kausarul05" },
     {
       label: "Email",
