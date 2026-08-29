@@ -47,3 +47,6 @@ video-out/*
 
 # generated documents (regenerate with `npm run cv`)
 cv-out/
+
+# personal details used by the CV scripts - never in a public repo
+src/content/cv.ts

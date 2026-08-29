@@ -29,7 +29,7 @@ export const seed: Content = {
     body:
       "I'm a full-stack developer who ships whole products, not slices of them — the interface, the API behind it, the database under that, and the store build when it belongs in your pocket. I started on the front end and kept going until no part of the stack was somebody else's problem. I care about the last ten percent: where the layout stops shifting, the endpoint stops timing out, and the thing finally feels intentional.",
     note:
-      "Commerce platforms, B2B wholesale, logistics and AI assistants — six shipped and live, two of them on Google Play.",
+      "Commerce platforms, B2B wholesale, logistics and AI assistants — more than six shipped and live, two of them on Google Play.",
     solves: [
       {
         title: "You need it built, not just designed",
@@ -49,9 +49,9 @@ export const seed: Content = {
       },
     ],
     stats: [
-      { value: 6, suffix: "", label: "Products shipped live" },
+      { value: 6, suffix: "+", label: "Products shipped live" },
       { value: 3, suffix: "+ yrs", label: "Shipping professionally" },
-      { value: 4, suffix: "", label: "Live web platforms" },
+      { value: 4, suffix: "+", label: "Live web platforms" },
       { value: 2, suffix: "", label: "Apps on Google Play" },
     ],
   },
