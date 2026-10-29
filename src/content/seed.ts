@@ -10,10 +10,10 @@ export const seed: Content = {
     name: "Kausarul Islam",
     first: "Kausarul",
     last: "Islam",
-    role: "Full-stack developer",
-    roleTail: "— web, mobile, and the API in between",
+    role: "Front-end developer",
+    roleTail: "— React, Next.js, and interfaces that stay fast",
     tagline:
-      "I build products end to end — React and Next.js on the front, Node and MongoDB behind it, React Native when it belongs in your pocket.",
+      "I build production interfaces in React, Next.js and TypeScript — layouts that stop shifting, interactions that hold their frame rate, and React Native when it belongs in your pocket.",
     location: "Bangladesh",
     timeZone: "Asia/Dhaka",
     edition: "2026",
@@ -27,13 +27,13 @@ export const seed: Content = {
   about: {
     kicker: "01 — About",
     body:
-      "I'm a full-stack developer who ships whole products, not slices of them — the interface, the API behind it, the database under that, and the store build when it belongs in your pocket. I started on the front end and kept going until no part of the stack was somebody else's problem. I care about the last ten percent: where the layout stops shifting, the endpoint stops timing out, and the thing finally feels intentional.",
+      "I'm a front-end developer with three-plus years building production interfaces in React, Next.js and TypeScript. I work on the part most teams leave until last: layouts that stop shifting, interactions that hold their frame rate, and pages that stay fast on a mid-range phone. I own UI architecture, a shared component library and browser performance end to end — and I have working knowledge of the API and data layer behind it, so handoffs stay clean.",
     note:
-      "Commerce platforms, B2B wholesale, logistics and AI assistants — more than six shipped and live, two of them on Google Play.",
+      "Commerce platforms, B2B wholesale, logistics and AI assistants — 6+ products live, plus 2+ React Native apps on Google Play.",
     solves: [
       {
-        title: "You need it built, not just designed",
-        body: "A Figma file or a rough idea goes in; a live URL comes out. Interface, API, database, deploy — one person, no handoff gaps.",
+        title: "You need the design built properly",
+        body: "A Figma file goes in; reusable, accessible components and a live URL come out. Responsive, consistent, and ready for the API to plug into.",
       },
       {
         title: "It's slow, or it breaks on phones",
@@ -44,12 +44,12 @@ export const seed: Content = {
         body: "React Native and Expo, taken all the way through to a Play Store release — not a prototype that stalls before it ships.",
       },
       {
-        title: "Your team needs to run it without me",
-        body: "Payments, integrations, AI chat, and an admin panel your staff can actually use. This site has one; edit it and the page updates.",
+        title: "Your team needs it to scale",
+        body: "A shared component library, clean UI architecture and API integration your team can build on. This site has an admin panel; edit it and the page updates.",
       },
     ],
     stats: [
-      { value: 6, suffix: "+", label: "Products shipped live" },
+      { value: 6, suffix: "+", label: "Products live" },
       { value: 3, suffix: "+ yrs", label: "Shipping professionally" },
       { value: 4, suffix: "+", label: "Live web platforms" },
       { value: 2, suffix: "", label: "Apps on Google Play" },
@@ -61,7 +61,7 @@ export const seed: Content = {
     headline: "Let's build something",
     headlineAccent: "worth shipping",
     body:
-      "Got a product that needs building end to end? I'm taking on new work — full builds, redesigns, or joining a team that cares about craft.",
+      "Got an interface that needs building or rebuilding? I'm taking on new work — front-end builds, redesigns, or joining a team that cares about craft.",
   },
 
   socials: [
@@ -79,14 +79,13 @@ export const seed: Content = {
     "React",
     "Next.js",
     "TypeScript",
-    "Node.js",
-    "Express.js",
-    "MongoDB",
+    "Tailwind CSS",
+    "Redux Toolkit",
     "React Native",
     "Expo",
-    "Firebase",
-    "AI Chatbots",
-    "API Integration",
+    "Web Performance",
+    "Accessibility",
+    "Figma",
     "Vercel",
   ],
 
@@ -96,16 +95,16 @@ export const seed: Content = {
       title: "Dealnux",
       subtitle: "Multi-vendor commerce platform",
       year: "2026",
-      role: "Full-stack developer",
+      role: "Front-end developer",
       status: "Live",
       summary:
         "A marketplace where sellers list their own products alongside deals pulled in from other stores. Shoppers compare prices across vendors, save what they want, and get told the moment it drops.",
       highlights: [
-        "Seller onboarding, product management and subscriptions",
+        "Seller onboarding and product management interfaces",
         "Price comparison across vendors with drop tracking",
         "AI assistant and referral rewards built in",
       ],
-      tags: ["Next.js", "TypeScript", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
+      tags: ["Next.js", "TypeScript", "Tailwind CSS"],
       accentFrom: "#f2a01d",
       accentTo: "#1b3a8f",
       accent: ["#f2a01d", "#1b3a8f"],
@@ -140,16 +139,16 @@ export const seed: Content = {
       title: "Eurasia Supplies",
       subtitle: "Beauty & personal care store",
       year: "2025",
-      role: "Full-stack developer",
+      role: "Front-end developer",
       status: "Live",
       summary:
         "A retail storefront for cosmetics, skincare and supplements — a dozen shopping categories, brand pages, combo offers and B1G1 promotions, with search across the whole catalogue.",
       highlights: [
         "Category, brand and promotion browsing across a deep catalogue",
-        "Accounts, cart and checkout end to end",
+        "Cart and checkout flow end to end",
         "Product search with live filtering",
       ],
-      tags: ["React", "Next.js", "Node.js", "MongoDB", "REST APIs", "Tailwind CSS"],
+      tags: ["React", "Next.js", "REST APIs", "Tailwind CSS"],
       accentFrom: "#e01b24",
       accentTo: "#ff6f91",
       accent: ["#e01b24", "#ff6f91"],
@@ -162,16 +161,16 @@ export const seed: Content = {
       title: "Azan Wholesale",
       subtitle: "B2B dropshipping platform",
       year: "2025",
-      role: "Full-stack developer",
+      role: "Front-end developer",
       status: "Live",
       summary:
         "A wholesale platform for resellers across Bangladesh. Sign up, pick from verified suppliers, and sell without holding stock — fulfilment and delivery are handled behind a reseller dashboard.",
       highlights: [
-        "Reseller onboarding with its own panel",
-        "Supplier catalogue and automated fulfilment flow",
+        "Reseller onboarding and dashboard interfaces",
+        "Interfaces on top of a supplier catalogue",
         "Sales dashboard with growth reporting",
       ],
-      tags: ["Next.js", "TypeScript", "Node.js", "Express.js", "MongoDB", "Tailwind CSS"],
+      tags: ["Next.js", "TypeScript", "Tailwind CSS"],
       accentFrom: "#ff2d78",
       accentTo: "#ff8bb6",
       accent: ["#ff2d78", "#ff8bb6"],
@@ -211,11 +210,11 @@ export const seed: Content = {
       summary:
         "A conversational AI assistant in your pocket — ask anything, keep your chat history, and pick up a thread where you left it. Built cross-platform and shipped to the Play Store.",
       highlights: [
-        "Streaming chat UI over an AI completion API",
-        "Persisted conversation history",
+        "Streaming chat interface",
+        "Conversation history that survives between sessions",
         "Cross-platform build published through EAS",
       ],
-      tags: ["React Native", "Expo", "TypeScript", "AI API", "Node.js", "Firebase"],
+      tags: ["React Native", "Expo", "TypeScript", "AI API", "Firebase"],
       accentFrom: "#7c4dff",
       accentTo: "#00d4b8",
       accent: ["#7c4dff", "#00d4b8"],
@@ -241,8 +240,8 @@ export const seed: Content = {
     },
     {
       id: "seed-backend",
-      group: "Backend",
-      items: ["Node.js", "Express.js", "MongoDB", "Mongoose", "REST APIs", "JWT Auth"],
+      group: "Back end (working knowledge)",
+      items: ["Node.js", "Express.js", "MongoDB", "Mongoose", "JWT Auth", "Firebase", "Stripe"],
     },
     {
       id: "seed-mobile",
@@ -281,9 +280,9 @@ export const seed: Content = {
       org: "Sparktech Agency",
       location: "Bangladesh",
       points: [
-        "Building production front ends in React and Next.js for client products.",
+        "Building production front ends in React and Next.js for client products across commerce, logistics and B2B.",
         "Shipping cross-platform mobile features in React Native alongside the web work.",
-        "Owning UI architecture, component systems and browser performance.",
+        "Owning UI architecture, the shared component library and browser performance.",
       ],
     },
     {
@@ -293,8 +292,8 @@ export const seed: Content = {
       org: "Freelance Corner",
       location: "Remote · Part-time",
       points: [
-        "Six months building cross-platform mobile apps in React Native, four hours a day.",
-        "Shipped builds through to store release alongside a full-time role.",
+        "Built cross-platform mobile interfaces in React Native, four hours a day.",
+        "Took screens from design through to a Play Store release.",
       ],
     },
     {
@@ -316,6 +315,7 @@ export const seed: Content = {
       location: "Bangladesh",
       points: [
         "Two years building client web applications on React.",
+        "Turned designs into reusable, accessible components across a dozen projects.",
         "Grew from interface work into the API and data layer behind it.",
       ],
     },

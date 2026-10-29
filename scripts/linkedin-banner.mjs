@@ -67,15 +67,14 @@ body{
     <span class="mono" style="font-size:14px;color:#868c9e">Dhaka, Bangladesh</span>
   </div>
 
-  <p class="title">Full-stack developer <span class="serif">who ships</span></p>
+  <p class="title">Front-end developer <span class="serif">who ships</span></p>
 
   <div class="stack">
     <span class="chip">React</span>
     <span class="chip">Next.js</span>
     <span class="chip">TypeScript</span>
-    <span class="chip">Node.js</span>
-    <span class="chip">Express</span>
-    <span class="chip">MongoDB</span>
+    <span class="chip">Tailwind</span>
+    <span class="chip">Redux</span>
     <span class="chip">React Native</span>
   </div>
 

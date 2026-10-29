@@ -62,7 +62,7 @@ const introHtml = `<style>${BASE}</style>
     <p class="display" style="font-size:170px">Kausarul</p>
     <p class="display" style="font-size:170px;color:transparent;-webkit-text-stroke:2px #eceef58c">Islam</p>
   </div>
-  <p class="serif" style="font-size:72px">Full-stack developer</p>
+  <p class="serif" style="font-size:72px">Front-end developer</p>
 </div>`;
 
 const outroHtml = `<style>${BASE}</style>
@@ -81,11 +81,11 @@ const outroHtml = `<style>${BASE}</style>
 
 /** Lower-third strips, drawn over the walkthrough. */
 const CAPTIONS = [
-  { file: "cap1", kicker: "01", text: "Full-stack developer. I ship whole products, not slices." },
-  { file: "cap2", kicker: "02", text: "A rough idea goes in. A live URL comes out." },
+  { file: "cap1", kicker: "01", text: "Front-end developer. Interfaces that stay fast." },
+  { file: "cap2", kicker: "02", text: "A design goes in. A live URL comes out." },
   { file: "cap3", kicker: "03", text: "Commerce platforms, B2B wholesale, logistics — live, with two apps on Google Play." },
-  { file: "cap4", kicker: "04", text: "React · Next.js · Node.js · Express · MongoDB · React Native" },
-  { file: "cap5", kicker: "05", text: "Front to database — this site runs on MongoDB, with its own admin panel." },
+  { file: "cap4", kicker: "04", text: "React · Next.js · TypeScript · Tailwind · React Native" },
+  { file: "cap5", kicker: "05", text: "Built and maintained by me — a Next.js site with its own admin panel." },
 ];
 
 function captionHtml({ kicker, text }) {

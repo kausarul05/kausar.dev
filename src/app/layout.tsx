@@ -24,6 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
     keywords: [
       site.name,
       site.role,
+      "Front-end Developer",
       "React Developer",
       "Next.js Developer",
       "React Native",

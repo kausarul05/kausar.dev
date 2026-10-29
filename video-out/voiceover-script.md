@@ -8,11 +8,11 @@ Total speaking time: **~34 seconds** inside a 43-second video.
 | Start | Say | What's on screen |
 | --- | --- | --- |
 | 0:00 | *(silence — let the name card breathe)* | Intro card |
-| 0:03 | "I'm Kausarul — a full-stack developer from Dhaka." | Hero, name landing |
-| 0:09 | "I build products end to end. React and Next.js on the front, Node and MongoDB behind it." | Hero → About |
+| 0:03 | "I'm Kausarul — a front-end developer from Dhaka." | Hero, name landing |
+| 0:09 | "I build production interfaces. React, Next.js and TypeScript, fast on any phone." | Hero → About |
 | 0:16 | "Commerce platforms, B2B wholesale, logistics — all live. And two apps on Google Play." | Project cards sliding past |
-| 0:25 | "React, Next.js, Node, Express, MongoDB, React Native." | Stack grid |
-| 0:29 | "Front to database — this site runs on MongoDB, with its own admin panel." | Timeline |
+| 0:25 | "React, Next.js, TypeScript, Tailwind, React Native." | Stack grid |
+| 0:29 | "I built and maintain this site too — with its own admin panel." | Timeline |
 | 0:34 | "I'm open to work. Let's build something worth shipping." | Contact section |
 | 0:39 | *(silence)* | Outro card |
 
